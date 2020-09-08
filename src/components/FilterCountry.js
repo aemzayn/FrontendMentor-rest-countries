@@ -10,12 +10,22 @@ const FilterCountry = ({ filterCountries, searchCountry, search }) => {
           <input
             type='text'
             className='search-country-input'
+            placeholder='Search for a country...'
+            title='Country or capital name'
+            aria-label='Search country'
+            aria-labelledby='filter-bar'
             value={search}
             onChange={searchCountry}
           />
         </div>
 
-        <select className='filter-region-select' onChange={filterCountries}>
+        <select
+          className='filter-region-select'
+          onChange={filterCountries}
+          title='Region'
+          aria-labelledby='filter-region-select'
+          aria-label='Filter countries by region'
+        >
           <option value='DEFAULT'>Flter by Region</option>
           {regions.map(region => (
             <option value={region} key={region}>
