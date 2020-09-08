@@ -25,6 +25,11 @@ body {
   option {
     font-family: 'Nunito Sans', sans-serif;
   }
+  input::placeholder {
+    font-weight: 400;
+    color: var(--text);
+    opacity: 0.8;
+  }
 }
 
 .App {
