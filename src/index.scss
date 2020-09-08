@@ -1,0 +1,350 @@
+* {
+  box-sizing: border-box;
+  text-decoration: none;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  font-family: 'Nunito Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
+    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+  input,
+  input::placeholder,
+  button,
+  span,
+  small,
+  select,
+  option {
+    font-family: 'Nunito Sans', sans-serif;
+  }
+}
+
+.App {
+  --background: hsl(0, 0%, 98%);
+  --element: hsl(0, 0%, 100%);
+  --text: hsl(200, 15%, 8%);
+  --box-shadow: 0 0 0.5rem #f2f2f2;
+}
+
+.App.dark-theme {
+  --background: hsl(207, 26%, 17%);
+  --element: hsl(209, 23%, 22%);
+  --text: hsl(0, 0%, 100%);
+  --box-shadow: 0 0 0.5rem #1d2935;
+}
+
+.container {
+  background-color: var(--background);
+  width: 100%;
+  color: var(--text);
+  flex-grow: 1;
+  padding: 20px 10%;
+
+  &.element {
+    background: var(--element);
+  }
+
+  &.full-height {
+    min-height: calc(100vh - 74px);
+  }
+
+  &.filter-component {
+    background: transparent;
+    margin-bottom: 20px;
+    padding: 1rem 0;
+    @media (max-width: 770px) {
+      .flex {
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+      }
+    }
+  }
+
+  &.country-page {
+    padding: 1rem inherit;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.flex {
+  display: flex;
+  position: relative;
+  align-items: center;
+
+  &.space-between {
+    justify-content: space-between;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem 2%;
+  @media (max-width: 770px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: 770px) {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Navbar styles
+nav {
+  .title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    a {
+      color: var(--text);
+    }
+    @media (max-width: 770px) {
+      font-size: 1rem;
+    }
+  }
+
+  button {
+    background-color: transparent;
+    color: var(--text);
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 600;
+    border: none;
+    outline: none;
+    cursor: pointer;
+
+    i {
+      margin-right: 5px;
+      width: 20px;
+      height: 20px;
+    }
+  }
+}
+
+// filter styles
+.filter-bar {
+  padding: 10px;
+  background-color: var(--element);
+  color: var(--text);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  i {
+    margin: 0 1rem;
+  }
+  @media (max-width: 770px) {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+}
+
+.search-country-input {
+  position: relative;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  font-size: 16px;
+  color: var(--text);
+  select {
+    display: none;
+  }
+}
+
+.filter-region-select {
+  padding: 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: var(--element);
+  color: var(--text);
+  appearance: none;
+  &::after {
+    position: absolute;
+    display: block;
+    content: '\f078';
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    color: red;
+    z-index: 10;
+    font: normal normal normal 14px/1 FontAwesome;
+  }
+  option {
+    margin: 5px 0;
+  }
+}
+
+// Card styles
+.card {
+  background-color: var(--element);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.country-flag {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  min-height: 200px;
+  border-radius: 5px 5px 0 0;
+  .fullHeight {
+    height: 100%;
+    border-radius: 0;
+    height: auto;
+    width: 100%;
+  }
+  @media (min-width: 1500px) {
+    height: 180px;
+  }
+}
+
+.card-content {
+  padding: 10px;
+  h3 {
+    color: var(--text);
+  }
+  h3 {
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+}
+
+.card-details {
+  span {
+    color: var(--text);
+    font-weight: 600;
+    &.data {
+      font-weight: 300;
+    }
+  }
+}
+
+// Country Page Styles
+.back-button {
+  position: relative;
+  grid-area: button;
+  display: inline-flex;
+  align-self: flex-start;
+  align-items: center;
+
+  padding: 1rem 2rem;
+  background: var(--element);
+  border-radius: 5px;
+  cursor: pointer;
+  i {
+    margin-right: 5px;
+  }
+  button {
+    position: relative;
+    color: var(--text);
+    font-weight: 400;
+    background: none;
+    outline: none;
+    border: none;
+    position: relative;
+    cursor: pointer;
+  }
+  @media (max-width: 770px) {
+    padding: 0.5rem 1.5rem;
+    i {
+      font-size: 0.85rem;
+    }
+  }
+}
+
+.country-page main {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: row;
+
+  & > div {
+    width: 50%;
+  }
+  h1 {
+    margin: 0;
+    font-size: 4rem;
+  }
+
+  .country-page-flag {
+    background-position: center center;
+    background-repeat: no-repeat;
+    width: 45%;
+    min-height: 33.75rem;
+    object-fit: cover;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    box-shadow: var(--box-shadow);
+    @media (max-width: 1440px) {
+      min-height: 200px;
+    }
+    @media (max-width: 770px) {
+      width: 100%;
+    }
+  }
+
+  .country-details {
+    padding-left: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    ul {
+      display: flex;
+      padding-left: 0;
+      .details-right {
+        margin-left: 2rem;
+      }
+      li {
+        list-style: none;
+        padding: 0;
+        margin: 0.5rem 0;
+      }
+    }
+
+    .border {
+      display: inline-block;
+      margin: 0.3rem;
+      padding: 0.3rem 1rem;
+      border: none;
+      border-radius: 2px;
+      background-color: var(--element);
+      box-shadow: var(--box-shadow);
+      &:nth-child(1) {
+        margin-left: 1rem;
+      }
+    }
+  }
+
+  @media (max-width: 770px) {
+    flex-direction: column;
+
+    .country-details {
+      padding-left: 0;
+      width: 100%;
+      h1 {
+        font-size: 2rem;
+        margin-top: 2rem;
+        width: 100%;
+      }
+      ul {
+        flex-direction: column;
+        .details-right {
+          margin: 1.5rem 0;
+        }
+      }
+    }
+  }
+}
