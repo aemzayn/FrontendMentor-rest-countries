@@ -3,7 +3,7 @@ import React from 'react'
 const FilterCountry = ({ filterCountries, searchCountry, search }) => {
   const regions = ['Africa', 'Americas', 'Asia', 'Europe', 'Oceania']
   return (
-    <div className='container filter-component'>
+    <div className='container filter-component' id='filter'>
       <div className='flex space-between'>
         <div className='filter-bar'>
           <i className='fas fa-search'></i>
@@ -13,7 +13,7 @@ const FilterCountry = ({ filterCountries, searchCountry, search }) => {
             placeholder='Search for a country...'
             title='Country or capital name'
             aria-label='Search country'
-            aria-labelledby='filter-bar'
+            aria-labelledby='filter'
             value={search}
             onChange={searchCountry}
           />
@@ -23,7 +23,7 @@ const FilterCountry = ({ filterCountries, searchCountry, search }) => {
           className='filter-region-select'
           onChange={filterCountries}
           title='Region'
-          aria-labelledby='filter-region-select'
+          aria-labelledby='filter'
           aria-label='Filter countries by region'
         >
           <option value='DEFAULT'>Flter by Region</option>
